@@ -2,14 +2,14 @@
 // Classe de base Produit
 abstract class Produit {
     // Propriétés communes à tous les produits
-    private $poids; // Poids du produit
-    private $dateDePeche; // Date de pêche (null si non applicable)
+    private $nom; // Nom du produit
     private $prix; // Prix du produit
+    private $poids; // Poids du produit
     private $origine; // Origine du produit
     private $labelEco; // Label écologique (Oui/Non)
     private $fournisseur; // Nom du fournisseur
     private $dateConservation; // Date de conservation
-    private $nom; // Nom du produit
+    private $dateDePeche; // Date de pêche (null si non applicable)
 
     // Constructeur : Initialise les propriétés
     public function __construct(
