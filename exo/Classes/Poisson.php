@@ -1,7 +1,7 @@
 <?php
 require_once 'Produits.php';
 
-class Poissonnerie extends Produit {
+class Poisson extends Produit {
 
     // Constructeur spécifique pour Poissonnerie
     public function __construct($nom, $prixParKg, $poids, $origine, $labelEco, $fournisseur, $dateDePeche) {

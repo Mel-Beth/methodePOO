@@ -1,6 +1,6 @@
 <?php
 // Classe de base Produit
-class Produit {
+abstract class Produit {
     // Propriétés communes à tous les produits
     private $poids; // Poids du produit
     private $dateDePeche; // Date de pêche (null si non applicable)
