@@ -1,26 +1,24 @@
 <?php
 require_once 'Produits.php';
 
-// Classe Poissonnerie hérite de Produit
 class Poissonnerie extends Produit {
 
-    // Constructeur : Initialise les propriétés spécifiques à Poissonnerie
+    // Constructeur spécifique pour Poissonnerie
     public function __construct($nom, $prixParKg, $poids, $origine, $labelEco, $fournisseur, $dateDePeche) {
-        // Appelle le constructeur de Produit avec une dateDePeche
         parent::__construct($nom, $prixParKg, $poids, $origine, $labelEco, $fournisseur, $dateDePeche, $dateDePeche);
     }
 
-    // Méthode : Vérifie si le poisson est encore frais
+    // Méthode : Vérifie si le poisson est frais
     public function estFrais() {
-        $dateAujourdhui = new DateTime(); // Date actuelle
-        $interval = $this->dateDePeche->diff($dateAujourdhui); // Différence entre aujourd'hui et la date de pêche
-        return $interval->days <= 3; // Considéré frais si pêché il y a 3 jours ou moins
+        $dateAujourdhui = new DateTime();
+        $interval = $this->getDateDePeche() ? (new DateTime($this->getDateDePeche()))->diff($dateAujourdhui) : null;
+        return $interval && $interval->days <= 3; // Considéré frais si pêché il y a moins de 3 jours
     }
 
-    // Méthode : Affiche les détails spécifiques à Poissonnerie
+    // Méthode : Affiche les détails spécifiques
     public function afficherDetails() {
-        parent::afficherDetails(); // Appelle la méthode de la classe parente pour afficher les propriétés communes
-        echo "Produit frais : " . ($this->estFrais() ? "Oui" : "Non") . "<br>"; // Indique si le poisson est encore frais
+        parent::afficherDetails();
+        echo "Produit frais : " . ($this->estFrais() ? "Oui" : "Non") . "<br>";
     }
 }
 ?>
